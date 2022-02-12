@@ -45,3 +45,33 @@ def solution(clothes):
         res *= (x+1) 
         
     return res-1
+
+
+
+###베스트 앨범
+def solution(g, p):
+    from collections import defaultdict
+    dic = defaultdict(list)
+    
+    for i in range(len(g)):
+        if len(dic[g[i]]) == 0:
+            dic[g[i]].append(0)
+        dic[g[i]].append([p[i],i])
+        dic[g[i]][0] += p[i]
+    
+    tar = list(dic.values())
+    tar.sort(key=lambda x:-x[0])
+    
+    print(tar)
+    res = []
+    for x in tar:
+        tarx = x[1:]
+        tarx.sort(key = lambda x:(-x[0], x[1]))
+        if len(tarx) == 1:
+            res.append(tarx[0][-1])
+        else:
+            res.append(tarx[0][1])
+            res.append(tarx[1][1])
+    return res
+        
+        
