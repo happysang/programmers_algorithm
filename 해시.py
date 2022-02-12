@@ -18,8 +18,8 @@ def solution(participant, completion):
     return list(Counter(participant) - Counter(completion))[0]
 
 
-###전화번호 목록
-#내 풀이
+
+### 전화번호 목록
 def solution(phone_book):
     if len(phone_book) == 1:
         return True
@@ -30,3 +30,18 @@ def solution(phone_book):
                 return False
         return True
 
+
+
+### 위장
+from collections import defaultdict
+
+def solution(clothes):
+    dic = defaultdict(int)
+    for x in clothes:
+        dic[x[-1]] += 1
+    
+    res = 1
+    for x in dic.values():
+        res *= (x+1) 
+        
+    return res-1
