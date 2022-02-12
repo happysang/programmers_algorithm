@@ -11,3 +11,12 @@ def solution(participant, completion):
             return participant[i]
     return participant[-1]
 
+### 좋은 풀이
+from collections import Counter
+
+def solution(participant, completion):
+    return list(Counter(participant) - Counter(completion))[0]
+
+
+
+
