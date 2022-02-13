@@ -42,3 +42,23 @@ def solution(p, l):
                 cnt += 1
         else:
             val.append(val.popleft())
+            
+            
+            
+### 다리를 지나는 트럭
+def solution(b, w, t):
+    temp = [0] * b
+    time = 0
+    
+    while(temp):
+        time += 1
+        temp.pop(0)
+        if t:    
+            if sum(temp)+t[0] <= w:
+                temp.append(t.pop(0))
+            else:
+                temp.append(0)
+        else:
+            time += (len(temp))
+            break
+    return time
