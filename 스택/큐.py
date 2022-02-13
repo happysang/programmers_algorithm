@@ -20,3 +20,25 @@ def solution(p, s):
             cnt = 1
     answer.append(cnt)
     return answer
+
+
+###프린터
+from collections import deque
+def solution(p, l):
+    val = []
+    for i in range(len(p)):
+        val.append((p[i],i))
+    val = deque(val)
+    
+    cnt = 0
+    while(val):
+        if val[0][0] == max(p):
+            if l == val[0][1]:
+                cnt += 1
+                return cnt
+            else:
+                p.remove(val[0][0])
+                val.popleft()
+                cnt += 1
+        else:
+            val.append(val.popleft())
