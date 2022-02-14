@@ -62,3 +62,16 @@ def solution(b, w, t):
             time += (len(temp))
             break
     return time
+
+
+### 주식 가격
+def solution(p):
+    res = [0] * len(p)
+    for i in range(len(p)-1):
+        for j in range(i+1,len(p)):
+            if p[i] <= p[j]:
+                res[i] += 1
+            else:
+                res[i] += 1
+                break
+    return res
