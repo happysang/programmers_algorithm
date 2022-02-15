@@ -1,4 +1,4 @@
-### 모의 고사
+### 모의고사
 def solution(a):
     l1 = [1,2,3,4,5] * (len(a)//5) + [1,2,3,4,5][:len(a)%5]
     l2 = [2,1,2,3,2,4,2,5] * (len(a)//8) + [2,1,2,3,2,4,2,5][:len(a)%8]
@@ -22,3 +22,40 @@ def solution(a):
         return [res[0][1]]
             
                 
+### 소수찾기
+def pnum(n):
+    if n == 0 or n == 1:
+        return []
+    else:
+        res = []
+        tar = [False,False]+[True]*(n-1)
+        for i in range(2,n+1):
+            if tar[i]:
+                res.append(i)
+                for j in range(i*2,n+1,i):
+                    tar[j] = False
+        return res
+                
+from itertools import permutations
+def solution(n):
+    nums = []
+    tar = set()
+    for x in n:
+        nums.append(x)
+        tar.add(int(x))
+        
+    for i in range(2,len(nums)+1):
+        temp = list(permutations(nums,i))
+        for k in temp:
+            tem = ''
+            for t in range(len(k)):
+                tem += k[t]
+            tar.add(int(tem))
+            
+    lis = pnum(max(tar))
+    res = 0
+    for x in tar:
+        if x in lis:
+            res += 1
+            
+    return res
