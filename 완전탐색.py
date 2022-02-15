@@ -59,3 +59,11 @@ def solution(n):
             res += 1
             
     return res
+
+
+### 카펫
+def solution(b, y):
+    for k in range(1,y+1):
+        if y%k == 0:
+            if k*2 +  (y//k)*2 + 4 == b:
+                return [(y//k)+2, k+2]
