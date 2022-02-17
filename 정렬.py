@@ -8,3 +8,11 @@ def solution(a, c):
 ### 가장 큰 수
 def solution(n):
     return str(int(''.join(sorted(list(map(str,n)), key = lambda x : x*3, reverse = True))))
+
+### H-index
+def solution(c):
+    temp = [0] * len(c)
+    for x in range(1, len(c)+1):
+        if len([t for t in c if t >= x]) < x:
+            return x-1
+    return len(c)
