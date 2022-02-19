@@ -50,4 +50,30 @@ def bfs(lis):
 def solution(n, computers):
     bfs(computers)
     return res
+
+
+
+### 단어 변환
+def solution(begin, target, words):
+    ans = []
+    def sol(begin,res):
+        if begin == target:
+            ans.append(res)
+        temp = []
+        for x in range(len(words)):
+            cnt = 0
+            for i in range(len(words[x])):
+                if words[x][i] == begin[i]:
+                    cnt += 1
+            if cnt == len(words[x])-1:
+                temp.append(words[x])
+                words[x] = ''
+        for k in temp:
+            sol(k,res+1)
+            
+    sol(begin,0)
     
+    if ans:
+        return min(ans)
+    else:
+        return 0
