@@ -24,3 +24,30 @@ def solution(numbers, tar):
     
     dfs(0,0,0,nums,tar)
     return cnt
+
+
+### 네트워크
+global res
+temp = []
+res = 0
+def bfs(lis):
+    global res
+    for i in range(len(lis)):
+        if lis[i][i] == 1:
+            res += 1
+            temp.append(i)
+        else:
+            continue
+        
+        while(temp):
+            tar = temp.pop(0)
+            for j in range(len(lis[tar])):
+                lis[tar][tar] == 0
+                if lis[tar][j] == 1:
+                    lis[j][tar] = 0
+                    temp.append(j)
+
+def solution(n, computers):
+    bfs(computers)
+    return res
+    
