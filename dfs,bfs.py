@@ -77,3 +77,30 @@ def solution(begin, target, words):
         return min(ans)
     else:
         return 0
+    
+    
+### 여행경로 (못 풀음, 풀이 잘 이해 못함)
+from collections import defaultdict
+
+def solution(tickets):
+    ti = defaultdict(list)
+
+    for x in tickets:
+        ti[x[0]].append(x[1])
+
+    for x in ti.values():
+        if len(x) >= 2:
+            x.sort(reverse = True)
+
+    stack = ['ICN']
+    ans = []
+    while(stack):
+        print(stack, ans)
+        tar = stack[-1]
+        if not ti[tar]:
+            ans.append(stack.pop())
+        else:
+            stack.append(ti[tar].pop())
+
+    ans.reverse()            
+    return ans
