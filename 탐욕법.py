@@ -68,3 +68,27 @@ def solution(n, lost, reserve):
 
     return min(res1, res2)
     
+    
+    ## 큰 수 만들기
+    
+    def solution(number, k):
+        val = []
+    for x in number:
+        val.append(int(x))
+    
+    print(val)
+    i = 0
+    for _ in range(k):
+        print("!!!")
+        while True:
+            if val[i] > val[i+1]:
+                del val[i+1]
+                break
+            elif val[i] < val[i+1]:
+                del val[i]
+                break
+            else:
+                i+=1
+        print(val)
+            
+        return ''.join(list(map(str,val)))
