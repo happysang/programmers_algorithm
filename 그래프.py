@@ -28,4 +28,29 @@ def solution(n, edge):
             temp = lis
                 
             
+### 순위
+from collections import defaultdict
+
+def solution(n, res):
+    win = defaultdict(list)
+    lose = defaultdict(list)
+    
+    for x in res:
+        win[x[0]].append(x[1])
+        lose[x[1]].append(x[0])
+    
+    for _ in range(n):
+        for x in list(win.keys()):
+            for k in win[x]:
+                win[x] = list( set(win[x]) | set(win[k]) )
+
+        for x in list(lose.keys()):
+            for k in lose[x]:
+                lose[x] = list( set(lose[x]) | set(lose[k]) )
+    
+    cnt = 0
+    for i in range(1,n+1):
+        if len(win[i]) + len(lose[i]) == n-1:
+            cnt += 1
             
+    return cnt
