@@ -17,16 +17,24 @@ def solution(s, k):
 
 
 ### 디스크 컨트롤러
-import heapq as hp
+import heapq 
 def solution(jobs):
-    nums = []
-    for x in jobs:
-        hp.heappush(nums, [x[1],x[0]])
     
-    print(nums)
-    
+    time, start, now = 0,-1,0
+    heap = []
     res = 0
-    for _ in range(len(jobs)):
-        res += hp.heappop(nums)[1]
-        print(res)
-        
+    while time < len(jobs):
+        for x in jobs:
+            if start < x[0] <= now:
+                heapq.heappush(heap,[x[1],x[0]])
+
+        if len(heap) >= 1:
+            temp = heapq.heappop(heap)
+            start = now
+            now += temp[0]
+            res += now - temp[1]
+            time += 1
+        else:
+            now += 1
+            
+    return res // len(jobs)
